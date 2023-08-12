@@ -4,9 +4,6 @@ import TextField from "../components/Input/TextField";
 import { IconButton, SendButton } from "../components/button/Buttons";
 import { BsMicFill, BsRobot } from "react-icons/bs";
 import api, { featuredQuestion } from "../api";
-import SpeechRecognition, {
-  useSpeechRecognition,
-} from "react-speech-recognition";
 
 import "../index.css";
 
@@ -15,19 +12,6 @@ const Home = () => {
   const [answer, setAnswer] = useState("");
   const [loading, setLoading] = useState(false);
   const [listening, setlistening] = useState(false);
-
-  const startRecording = () => {
-    SpeechRecognition.startListening({ continuous: true });
-  };
-
-  const { transcript, browserSupportsSpeechRecognition } =
-    useSpeechRecognition();
-
-  console.log(transcript);
-
-  if (!browserSupportsSpeechRecognition) {
-    return null;
-  }
 
   const sendMessage = async () => {
     try {
@@ -51,8 +35,8 @@ const Home = () => {
   return (
     <div className="h-full w-full flex gap-10">
       <div className="h-full p-4 w-[30%] relative ">
-        <h1 className="text-[50px] font-bold">AiGI</h1>
-        <div className="mt-5">
+        <h1 className="text-[50px] font-bold ">AiGI</h1>
+        <div className="mt-10 ">
           <h3 className="font-bold">Frequently Asked Questions-</h3>
           {featuredQuestion.map((item, index) => {
             return (
@@ -63,7 +47,7 @@ const Home = () => {
           })}
         </div>
         <div className="w-full absolute bottom-5 ">
-          <TextField getTextInput={getTextInput} transcript={transcript} />
+          <TextField getTextInput={getTextInput} />
           <div className="flex items-center justify-end ">
             <SendButton
               label="Send"
@@ -71,17 +55,17 @@ const Home = () => {
               disable={loading}
             />
 
-            {listening ? (
+            {/* {listening ? (
               <IconButton
                 icon={<BsMicFill className="text-xl " />}
-                onClick={startRecording}
+                // onClick={startRecording}
               />
             ) : (
               <IconButton
                 icon={<BsMicFill className="text-xl " />}
                 // onClick={startRecording}
               />
-            )}
+            )} */}
           </div>
         </div>
       </div>
@@ -104,7 +88,7 @@ const Home = () => {
               {answer ? (
                 <div className="border-l-4 border-purple-500 pl-4 text-lg bg-slate-800 rounded p-4">
                   <pre className="whitespace-pre-wrap">
-                    <code>{transcript}</code>
+                    <code>{answer}</code>
                   </pre>
                 </div>
               ) : (

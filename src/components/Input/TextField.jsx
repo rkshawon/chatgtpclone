@@ -1,12 +1,12 @@
 import { useEffect, useRef, useState } from "react";
 
-const TextField = ({ getTextInput, transcript }) => {
+const TextField = ({ getTextInput }) => {
   const textareaRef = useRef(null);
   const [value, setValue] = useState("");
 
-  useEffect(() => {
-    setValue(transcript);
-  }, [transcript]);
+  // useEffect(() => {
+  //   setValue(transcript);
+  // }, [transcript]);
 
   const handleChange = (event) => {
     setValue(event.target.value);
@@ -24,7 +24,7 @@ const TextField = ({ getTextInput, transcript }) => {
   return (
     <textarea
       ref={textareaRef}
-      className="text-black resize-none h-[300px] max-h-[500px] overflow-y-auto border px-2 py-1 rounded min-w-[160px] w-full"
+      className="text-white bg-slate-800 resize-none h-[300px] max-h-[500px] overflow-y-auto border px-2 py-1 rounded min-w-[160px] w-full"
       value={value}
       onChange={handleChange}
       placeholder="Ask here..."
