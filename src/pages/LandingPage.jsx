@@ -12,7 +12,7 @@ const LandingPage = () => {
 
   return (
     <div className="container relative min-h-screen">
-      <h1 className="text-[50px] font-bold">AiGI</h1>
+      <h1 className="text-[50px] font-bold mt-5">AiGI</h1>
       <Bubbles />
 
       <div className="flex items-center justify-center h-full absolute top-0 left-0 w-full z-30">

@@ -1,10 +1,10 @@
 import "regenerator-runtime/runtime";
 import { useState } from "react";
 import TextField from "../components/Input/TextField";
-import { IconButton, SendButton } from "../components/button/Buttons";
+import { SendButton } from "../components/button/Buttons";
 import { BsMicFill, BsRobot } from "react-icons/bs";
 import api, { featuredQuestion } from "../api";
-
+import { useSpeechSynthesis } from "react-speech-kit";
 import "../index.css";
 
 const Home = () => {
@@ -12,6 +12,7 @@ const Home = () => {
   const [answer, setAnswer] = useState("");
   const [loading, setLoading] = useState(false);
   const [listening, setlistening] = useState(false);
+  const { speak } = useSpeechSynthesis();
 
   const sendMessage = async () => {
     try {
@@ -30,6 +31,11 @@ const Home = () => {
 
   const getTextInput = (val) => {
     setQuestion(val);
+  };
+
+  const audio = () => {
+    !loading &&
+      speak({ text: question + " Answer " + answer?.props?.children[2] });
   };
 
   return (
@@ -60,12 +66,12 @@ const Home = () => {
                 icon={<BsMicFill className="text-xl " />}
                 // onClick={startRecording}
               />
-            ) : (
-              <IconButton
-                icon={<BsMicFill className="text-xl " />}
-                // onClick={startRecording}
-              />
-            )} */}
+            ) : ( */}
+
+            <button className="bg-purple-900 h-[40px] font-semibold sm:py-2 sm:px-4 py-1 px-3 rounded-r flex items-center justify-center ">
+              <BsMicFill className="text-xl " onClick={audio} />
+            </button>
+            {/* )} */}
           </div>
         </div>
       </div>
