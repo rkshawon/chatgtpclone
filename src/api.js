@@ -22,7 +22,7 @@ export const api = async (chat) => {
 
 const featuredQuestion = [
   "What is Java?",
-  "What is JavaScript's purpose?",
+  "JavaScript's purpose?",
   "Explain machine learning.",
   "Benefits of cloud computing?",
   "What is Object-oriented programming?",

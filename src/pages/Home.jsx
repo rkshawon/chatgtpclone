@@ -34,8 +34,11 @@ const Home = () => {
   };
 
   const audio = () => {
-    !loading &&
-      speak({ text: question + " Answer " + answer?.props?.children[2] });
+    !loading && answer
+      ? speak({ text: question + " Answer " + answer?.props?.children[2] })
+      : speak({
+          text: "type your question in the input field and press send button to get your answer.",
+        });
   };
 
   return (
@@ -68,8 +71,11 @@ const Home = () => {
               />
             ) : ( */}
 
-            <button className="bg-purple-900 h-[40px] font-semibold sm:py-2 sm:px-4 py-1 px-3 rounded-r flex items-center justify-center ">
-              <BsMicFill className="text-xl " onClick={audio} />
+            <button
+              onClick={audio}
+              className="bg-purple-900 h-[40px] font-semibold sm:py-2 sm:px-4 py-1 px-3 rounded-r flex items-center justify-center "
+            >
+              <BsMicFill className="text-xl " />
             </button>
             {/* )} */}
           </div>

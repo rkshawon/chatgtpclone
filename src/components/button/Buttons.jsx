@@ -8,7 +8,7 @@ const SendButton = ({ icon, label, sendMessage, disable }) => {
       } rounded-l bg-p`}
     >
       {icon && <span className="mr-2">{icon}</span>}
-      {label}s
+      {label}
     </button>
   );
 };
