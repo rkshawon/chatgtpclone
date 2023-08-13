@@ -2,7 +2,7 @@ import "regenerator-runtime/runtime";
 import { useState } from "react";
 import TextField from "../components/Input/TextField";
 import { SendButton } from "../components/button/Buttons";
-import { BsMicFill, BsRobot } from "react-icons/bs";
+import { BsRobot, BsSoundwave } from "react-icons/bs";
 import api, { featuredQuestion } from "../api";
 import { useSpeechSynthesis } from "react-speech-kit";
 import "../index.css";
@@ -23,6 +23,8 @@ const Home = () => {
           <strong>Answer: </strong> {response}
         </>
       );
+      featuredQuestion.pop();
+      featuredQuestion.unshift(question);
       setLoading(false);
     } catch (error) {
       console.error(error);
@@ -45,8 +47,8 @@ const Home = () => {
     <div className="h-full w-full flex gap-10">
       <div className="h-full p-4 w-[30%] relative ">
         <h1 className="text-[50px] font-bold ">AiGI</h1>
-        <div className="mt-10 ">
-          <h3 className="font-bold">Frequently Asked Questions-</h3>
+        <div className="mt-10 overflow-y-auto h-[220px]">
+          <h3 className="font-bold">Recently Asked Questions-</h3>
           {featuredQuestion.map((item, index) => {
             return (
               <li key={index} className="mt-1 text-sx cursor-pointer">
@@ -64,18 +66,11 @@ const Home = () => {
               disable={loading}
             />
 
-            {/* {listening ? (
-              <IconButton
-                icon={<BsMicFill className="text-xl " />}
-                // onClick={startRecording}
-              />
-            ) : ( */}
-
             <button
               onClick={audio}
               className="bg-purple-900 h-[40px] font-semibold sm:py-2 sm:px-4 py-1 px-3 rounded-r flex items-center justify-center "
             >
-              <BsMicFill className="text-xl " />
+              <BsSoundwave className="text-xl " />
             </button>
             {/* )} */}
           </div>
@@ -83,7 +78,7 @@ const Home = () => {
       </div>
 
       <div className="w-[70%] h-[100%]">
-        <div className="full overflow-y-auto py-8 px-20 h-full bg-slate-700 ">
+        <div className=" overflow-y-auto py-8 px-20 h-full bg-slate-700 ">
           <div className="flex items-center mb-5 bg-slate-500 rounded p-4">
             <span className="bg-white h-8 w-8 flex items-center justify-center rounded-full mr-3">
               <BsRobot className="text-xl text-green-800" />
