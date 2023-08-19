@@ -11,7 +11,6 @@ const Home = () => {
   const [question, setQuestion] = useState("Got Questions? Ask Away!");
   const [answer, setAnswer] = useState("");
   const [loading, setLoading] = useState(false);
-  const [listening, setlistening] = useState(false);
   const { speak } = useSpeechSynthesis();
 
   const sendMessage = async () => {
@@ -45,8 +44,8 @@ const Home = () => {
 
   return (
     <div className="h-full w-full flex gap-10">
-      <div className="h-full p-4 w-[30%] relative ">
-        <h1 className="text-[50px] font-bold ">AiGI</h1>
+      <div className="h-full p-5 w-[30%] relative ">
+        <h1 className="text-[50px] font-bold ml-4">AiGI</h1>
         <div className="mt-10 overflow-y-auto h-[220px]">
           <h3 className="font-bold">Recently Asked Questions-</h3>
           {featuredQuestion.map((item, index) => {
